@@ -1,0 +1,15 @@
+{% for field in form %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            {% if field.errors %}
+                {% if email == 1 %}
+                    <span class="text-danger medium">Enter your email!</span>
+                {% else %}
+                    <span class="text-danger medium">{{ field.errors }}</span>
+                {% endif %}
+            {% endif %}
+        </div>
+        <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+        <div class="col-sm-10">{{ field }}</div>
+    </div>
+{% endfor %}

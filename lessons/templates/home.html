@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      {% load staticfiles %}
+      {% load static %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="{%  static 'style.css' %}"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        {% include 'nav_bar.html' %}
+        {% if python_list and django_list %}
+        <div class="container">
+            <h1 style="font-size: 250%; font-family: Times">{{ username }}, you have access to all the lessons. Enjoy!!</h1>
+            <br></br>
+            <div class="row">
+                <div class="col-md-4">
+                    <ul>
+                    <img width="200" src="{% static "python_logo.png" %}"/>
+                    <br></br>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="font-size: 125%">Python Basics <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                {% for python in python_list %}
+                                    <li><a href="{{ python.python_file.url }}">{{ python.python_file.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                    <img width="350" src="{% static "django_logo.png" %}"/>
+                        <br></br>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="font-size: 125%">Django from Scratch <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                {% for django in django_list %}
+                                    <li><a href="{{ django.django_file.url }}">{{ django.django_file.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        {% else %}
+                <h1>No lessons available</h1>
+            {% endif %}
+        </div>
+    </body>
+</html>

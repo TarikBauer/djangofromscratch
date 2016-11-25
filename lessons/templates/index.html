@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load staticfiles %}
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{%  static 'style.css' %}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        {% include 'nav_bar.html' %}
+        {%  if registration == 1 %}
+            <div class="alert alert-warning">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong style="font-size: 175%">Warning!</strong>
+                <p style="font-size: 150%;">You have to register to access more lessons...</p>
+            </div>
+        {% endif %}
+        {% if logged == 1 %}
+            <div class="alert alert-success">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong style="font-size: 175%">Success.</strong>
+                <p style="font-size: 150%">You've logged out!</p>
+            </div>
+        {% elif logged == 2 %}
+            <div class="alert alert-danger">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong style="font-size: 175%">Alert!</strong>
+                <p style="font-size: 150%">You weren't logged in...</p>
+            </div>
+        {% endif %}
+        <div class="jumbotron" >
+            <div class="container">
+                <h1 class="display-3" style="font-family: Times;">Welcome!</h1>
+                <p style="font-family: Times; font-size: 200%;">This webservice have lessons to develop this Django project from the scratch and to deploy it in the cloud, using Heroku. For trial, you have access to just two lessons, register to access the full content of this webservice!!!</p>
+                <a class="btn btn-primary btn-lg" role="button" href={% url 'registration' %}>Register &raquo;</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href={{ python_lesson.python_file.url }}>
+                        <img width="200" src="{% static "python_logo.png" %}"/>
+                        <p class="card-text" style="font-size: 150%;">{{ python_lesson.python_file.name }}</p>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href={{ django_lesson.django_file.url }}>
+                        <img width="350" src="{% static "django_logo.png" %}"/>
+                        <p class="card-text" style="font-size: 150%;">{{ django_lesson.django_file.name}}</p>
+                    </a>
+                </div>
+             </div>
+        </div>
+    </body>
+</html>

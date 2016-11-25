@@ -1,0 +1,40 @@
+{% load staticfiles %}
+{% load static %}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="font-family: 'Bodoni 72 Oldstyle'; font-size: 250%; color: white" href="{% url 'index' %}">Metalanguage</a>
+        </div>
+        <div class="collapse navbar-collapse" id="Navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="{% url 'logout' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
+                        Logout
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active">
+                    <a href="{% url 'login' %}">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
+                        Login
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active">
+                    <a href="{% url 'home' %}">
+                        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;
+                        Lessons
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
