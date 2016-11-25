@@ -1,0 +1,1 @@
+web: gunicorn djangofromscratch.wsgi --log-file -
