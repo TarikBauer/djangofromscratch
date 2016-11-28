@@ -32,10 +32,12 @@ class UserFormView(View):
 
 
 def logout_user(request):
+    python = Python.objects.all()[0]
+    django = Django.objects.all()[0]
     if request.user.is_authenticated():
         logout(request)
-        return render(request, 'index.html', {'logged': 1})
-    return render(request, 'index.html', {'logged': 2})
+        return render(request, 'index.html', {'logged': 1, 'python_lesson': python, 'django_lesson': django})
+    return render(request, 'index.html', {'logged': 2, 'python_lesson': python, 'django_lesson': django})
 
 
 def home(request):
